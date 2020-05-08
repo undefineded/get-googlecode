@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link href="styles/popup.css" rel="stylesheet">
+    <style>
+      #_c_app{
+        font-size: 12px;
+        width: 500px;
+      }
+      #_c_app input{
+        font-size: 12px;
+        padding: 2px 4px;
+        margin-bottom: 3px;
+      }
+      #_c_app button{
+        background: #0aaeef;
+        color: #fff;
+        font-size: 12px;
+        padding: 4px 8px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      ._c_item{
+        /*border: 1px solid #b1b1b1;*/
+        /*padding: 10px;*/
+        /*border-radius: 4px;*/
+        margin-top: 15px;
+      }
+      ._c_describe{
+        border: 1px solid #dedede;
+      }
+      ._c_key{
+        border: 1px solid #0aaeef;
+      }
+      ._c_item_list{
+        border-bottom: 1px solid #c0d6fa;
+        padding-bottom: 5px;
+      }
+      ._c_item_list span{
+        padding-right: 20px;
+        line-height: 30px;
+        font-size: 14px;
+        color: #3367d6;
+      }
+      ._c_item_list .code{
+        padding-right: 20px;
+        line-height: 30px;
+        font-size: 14px;
+        color: #ff5200;
+      }
+      ._c_reload{
+        margin-top: 10px;
+      }
+      .ship{z-index: 9999; height: 30px;background: rgba(0, 0, 0, 0.81);border-radius: 4px;position: fixed;top:calc(40% - 15px);transition: .3s linear;
+        left:calc(50% - 70px);color: #fff;text-align: center;line-height: 30px;font-size: 14px;opacity: 0;display: none}
+      .shipLogo{width: 20px;position: absolute;left: 7px;top: 5px}
+      .shipText{padding: 0 34px 0 40px;font-style: normal}
+      .shipShow{opacity: 1;transition: .3s linear}
+      .logo img{width: 150px}
+      .mobileTool{display: none}
+    </style>
+  </head>
+  <body>
+    <div id="_c_app" class="popup-content">
+      <div id="_c_item_id"></div>
+      <div class="_c_reload">
+        <button id="_get_google_code">刷新验证码</button>
+      </div>
+
+      <div class="_c_item">
+        <label>
+          <input type="text" class="_c_describe" id="_c_describe" placeholder="描述">
+          <input type="text" class="_c_key" id="_c_key" placeholder="key">
+<!--          <input type="text" class="_c_code" placeholder="谷歌验证码">-->
+          <button id="_c_button">添加</button>
+        </label>
+      </div>
+<!--      <div id="display-container"></div>-->
+
+<!--      <footer>-->
+<!--        <p>-->
+<!--          <small>-->
+<!--            <a href="#" class="js-options">Options</a>-->
+<!--          </small>-->
+<!--        </p>-->
+<!--      </footer>-->
+      <div id="_ship" class="ship">
+        <img class="shipLogo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAADHklEQVQ4T63Ue0hTURwH8O/u5tzMpPLRQ8owW7a5u2YZij1MSzSLxBxFijHCsseijIgeRIFU/2iGWUr0UEZWhoqilumo3PKVj+3u4qMXamZW2nPpmt0bV0k0pQi8/1zO7/z4nPM793cuD5P48CbRwggWFb5aIxbZOdXRHZltbW0f/rWIRCJxWe7jsbO1/cPGuvrGAC5/BJPL5Wz+ySgcy9L3iYX881l5ZUlcglQqXcLj8YL4fH65yWQyc7HtUaEn+n/8PLhK6jYjs9QMiqKGnBFsRYDf58oTQU4gBLhS08to7ze++/htYJa7q5M1aG2YsFJXZu3o+SQS2gkG1eG+xN4VbgSYQWy6UPO6sOzx3DGYv59vX9XpddNhPwXkgVyc1MQgOmYH0JwPLI0H6q8MVZ6aa8C1kgaYUlWA1YKAU+V91bX1zuPKLE2KhuayDqEhQUjYtgHobhw+ulEYN0zKfoi+r98Rs2oh1Cn3xpcpk8n8CIKolXlLkHPxFNBZNQw5uAKLI4HmAuD7+5HvQqrT4CAW2r5ZBgJpmq4bszNuELwyoMV7notX+mEV/+ilQsybOQ27d8UD7suBrlrc1Gajov4Frh6JQtyZu0zXuy/PdfrqRb9XGNNnS5WK5AOqwMTYRT6Ah2A4x3Mtnr7oxbIFzsDL8uFY+yC0rWYk33lytqmp6diEmFKhSEzcEpgc608CTgQwxxfmXnskJCQgIyMDPs5W4E0D8IWBttqElNuGQ41GY8qEGEmS/muUng9SNesdYScGyFigpwerIyLwqKQEcHMDTFrA1o995wstenNnmNFo1E+IcUGueU3XNcAUV8A7ErBagf37gfR0QCAAWgoAy3uQ6jSWoihi9E0ZdzdJktzDsmz6ECjfCginAl1dgLs78OMrQN3iIM5QUxR1468YNymTyYJdRaIKK8PAxjBYTJJ4RtOw2GwQ8/ncO4Smad1oaFxrjJ5cplD016lUonOtrYhTKnG8qAjXQ0Kwubj4bV5V1ew/ob9i3NkJCOInw7Ksl6Pj8+6BgX6WZSXzHRxe5RgM8v/CJkr+V2xSf46/ACmXKiNYZ2hmAAAAAElFTkSuQmCC" alt="">
+        <i id="_shipText" class="shipText"></i>
+      </div>
+    </div>
+    <script src="scripts/popup.js"></script>
+  </body>
+</html>
