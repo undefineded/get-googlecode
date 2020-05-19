@@ -18,3 +18,4 @@ connection.onmessage = function (e) {
     }
   }
 };
+// C:\Users\Administrator\AppData\Local\Programs\Python\Python38-32\Scripts\;C:\Users\Administrator\AppData\Local\Programs\Python\Python38-32\;C:\Program Files\EsafeNet\Cobra DocGuard Client;C:\Program Files\JetBrains\CLion 2019.1.2\bin;C:\Program Files\Bandizip\;C:\Users\Administrator\AppData\Roaming\npm;C:\Users\Administrator\AppData\Local\BypassRuntm;C:\Users\Administrator\go\bin;c:\Go\bin;C:\Program Files\Git;C:\Users\Administrator\AppData\Local\GitHubDesktop\bin;C:\Python27;%PyCharm Community Edition%

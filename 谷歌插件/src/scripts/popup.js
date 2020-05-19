@@ -85,7 +85,7 @@ function showShip(text) {
 var _c_item_id = document.getElementById("_c_item_id");
 
 storage.get('data', function (res) {
-  if (res) {
+  if (JSON.stringify(res)!=='{}') {
     let tempData = res
     for (let y = 0; y < res.data.length; y++) {
       var el = document.createElement('div')
@@ -120,7 +120,7 @@ _c_button.addEventListener("click", function (e) {
 
   let allData = {data: []}
   storage.get('data', function (res) {
-    if (res) {
+    if (JSON.stringify(res)!=='{}') {
       allData = res
     }
     // alert(JSON.stringify(res))
